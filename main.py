@@ -9,7 +9,6 @@ def on_forever():
     u_raw = 0
     # imports amount of voltage, from 0-1023
     u_raw = pins.analog_read_pin(AnalogPin.P0)
-    basic.show_number(u_raw)
     # maps amount of voltage to a 0-3 scale
     u = Math.map(u_raw, 0, 1023, 0, 3)
     # calculates current
