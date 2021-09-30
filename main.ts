@@ -1,15 +1,15 @@
 let r = 0
 let i = 0
 let u = 0
-let voltage_raw = 0
+let u_raw = 0
 let r_target = 100
 basic.forever(function () {
-    let u_raw = 0
+    u_raw = 0
     // imports amount of voltage, from 0-1023
-    voltage_raw = pins.analogReadPin(AnalogPin.P0)
+    u_raw = pins.analogReadPin(AnalogPin.P0)
     basic.showNumber(u_raw)
     // maps amount of voltage to a 0-3 scale
-    u = Math.map(voltage_raw, 0, 1023, 0, 3)
+    u = Math.map(u_raw, 0, 1023, 0, 3)
     // calculates current
     i = u / 1000
     // calculates resistance
