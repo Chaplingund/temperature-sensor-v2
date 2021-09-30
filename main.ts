@@ -1,17 +1,36 @@
-let voltage_raw = 0
-let u = 0
 let r = 0
 let i = 0
-basic.forever(function on_forever() {
-    
-    //  imports amount of voltage, from 0-1023
+let u = 0
+let voltage_raw = 0
+let r_target = 100
+basic.forever(function () {
+    let u_raw = 0
+    // imports amount of voltage, from 0-1023
     voltage_raw = pins.analogReadPin(AnalogPin.P0)
-    basic.showNumber(voltage_raw)
-    //  maps amount of voltage to a 0-3 scale
+    basic.showNumber(u_raw)
+    // maps amount of voltage to a 0-3 scale
     u = Math.map(voltage_raw, 0, 1023, 0, 3)
-    //  calculates current
+    // calculates current
     i = u / 1000
-    //  calculates resitance
+    // calculates resistance
     r = (3 - u) / i
-    basic.showNumber(r)
+    // triggers on too high resistance
+    if (r >= r_target) {
+        basic.showLeds(`
+            . . # . .
+            . # # # .
+            # # # # #
+            . . # . .
+            . . # . .
+            `)
+        pins.digitalWritePin(DigitalPin.P1, 1023)
+    } else {
+        basic.showLeds(`
+            . # . # .
+            . # . # .
+            . . . . .
+            # . . . #
+            . # # # .
+            `)
+    }
 })
