@@ -24,7 +24,7 @@ def on_forever():
                         . . # . .
                         . . # . .
         """)
-        pins.digital_write_pin(DigitalPin.P1, 1023)
+        pins.digital_write_pin(DigitalPin.P1, 1)
     else:
         basic.show_leds("""
             . # . # .

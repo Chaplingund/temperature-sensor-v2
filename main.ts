@@ -23,7 +23,7 @@ basic.forever(function on_forever() {
                         . . # . .
                         . . # . .
         `)
-        pins.digitalWritePin(DigitalPin.P1, 1023)
+        pins.digitalWritePin(DigitalPin.P1, 1)
     } else {
         basic.showLeds(`
             . # . # .
